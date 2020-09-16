@@ -17,4 +17,4 @@
 
 邮件效果如下：
 
-<img src="/screenshot.jpg" width="50%" style="border: 1px solid #dedede">
+<img src="/screenshot.jpg" width="50%" style="border: 1px solid #dedede;">
