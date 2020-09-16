@@ -17,4 +17,6 @@
 
 邮件效果如下：
 
+<img src="/screenshot.jpg" width="50%">
+
 ![爱心小邮件](screenshot.jpg)
