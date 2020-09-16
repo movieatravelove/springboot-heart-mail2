@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>每日提醒</title>
+</head>
+<!-- 由于在微信QQ邮箱提醒中无法正常显示样式
+     所有样式全部加载标签上
+    -->
+<body style=" text-align: center; font-size: 14px; letter-spacing: 1px;">
+<div class="main" style="color: #333; padding: 0 15px; margin: 0 auto;">
+    <div class="header" style="text-align: left; font-size: 16px;">
+        <span th:text="${noon}">早上</span>好，<span th:text="${username}"></span>
+    </div>
+    <div class="day" style="text-align: center; font-size: 16px; margin-top: 20px;">
+        今天是我们认识的第<span th:text="${dayCount}" class="dayCount" style="font-size: 22px;">520</span>天哦
+    </div>
+    <div class="tips" th:if="${weather}" style=" text-align: center; font-size: 16px; margin-top: 35px;">
+        <span th:text="${weather}">阴转多云</span>
+        <span th:text="${advice}">，建议着厚外套加毛衣等服装</span>
+    </div>
+    <div class="weather" th:if="${currWeaList0}" style="margin-top: 15px; font-size: 14px;">
+        <div class="title" style=" color: #555555; font-size: 12px; text-align: center; margin-bottom: 5px;">
+            近期天气预报（<span th:text="${city}">西安</span>）</div>
+        <table class="weather-block" style="text-align: center; margin: 0 auto;">
+            <tr th:each="wea : ${currWeaList0}" style="height: 25px;">
+                <td>今天</td>
+                <td style="padding: 0 10px;" th:text="${wea.weather}">阴转多云</td>
+                <td style="padding: 0 10px;" th:text="${wea.temperature}">2℃~15℃</td>
+                <td style="padding: 0 10px;" th:text="${wea.wind}">西南风微风</td>
+            </tr>
+            <tr th:each="wea : ${currWeaList1}" style="height: 25px;">
+                <td>明天</td>
+                <td style="padding: 0 10px;" th:text="${wea.weather}">阴</td>
+                <td style="padding: 0 10px;" th:text="${wea.temperature}">2℃~13℃</td>
+                <td style="padding: 0 10px;" th:text="${wea.wind}">东北风微风</td>
+            </tr>
+            <tr th:each="wea : ${currWeaList2}" style="height: 25px;">
+                <td>后天</td>
+                <td style="padding: 0 10px;" th:text="${wea.weather}">阴</td>
+                <td style="padding: 0 10px;" th:text="${wea.temperature}">2℃~11℃</td>
+                <td style="padding: 0 10px;" th:text="${wea.wind}">东风3-5级</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="cons" th:if="${summary}" style="margin-top: 35px;text-align: center">
+        <div class="title" style=" color: #555555; font-size: 12px; text-align: center; margin-bottom: 5px;">
+            星座运势（<span th:text="${consName}">双子座</span>）</div>
+        <div class="text" style="padding: 2px 10px;">
+            <p th:each="s : ${summary}" th:text="${s}" style="margin: 0">今天情绪会阳光很多</p>
+        </div>
+        <img th:src="@{${radarImg}}" src="radarImg.png" style="margin: 0 auto"/>
+    </div>
+
+    <div class="jock" th:if="${jock}"  style="margin-top: 35px;">
+        <div class="title" style=" color: #555555; font-size: 12px; text-align: center; margin-bottom: 5px;">要记得开心呦~</div>
+        <div class="text" th:text="${jock}" style="text-align: left; padding: 0 10px; text-align: justify; text-justify: inter-ideograph;">‍‍
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        </div>
+    </div>
+
+    <div class="one-images" th:if="${image}">
+        <div class="title" style=" margin-top: 35px;color: #555555; font-size: 12px; text-align: center;
+            margin-bottom: 5px;">每日一图</div>
+        <img width="100%" th:src="@{${image}}" src="cat.jpg"/>
+        <p th:text="${copyright}" style="font-size: 12px; text-align: center;margin: 0">喵喵喵</p>
+    </div>
+
+
+    <div class="one-note" th:if="${note}" >
+        <div class="title" style=" margin-top: 35px;color: #555555; font-size: 12px; text-align: center;
+            margin-bottom: 5px;">每日一句</div>
+        <p th:text="${note}" style="font-size: 14px; text-align: left;margin: 0;padding-top: 5px;">知足使贫穷的人富有；而贪婪使富足的人贫穷。</p>
+        <p th:text="${content}" style="font-size: 14px; text-align: left;margin: 0">Content makes poor men rich; discontent makes rich men poor.</p>
+    </div>
+
+    <div class="footer" style="margin: 35px 0;float: right;">
+        来自最爱你的我♡
+    </div>
+</div>
+</body>
+</html>

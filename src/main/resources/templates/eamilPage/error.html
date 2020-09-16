@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>抱歉，出错了</title>
+</head>
+<body>
+
+    <h4 class="weui_msg_title">未找到页面</h4>
+
+    <script th:inline="javascript">
+        var data = [[${data}]];
+        console.log(data);
+        $(".weui_msg_title").html(data.message);
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="http://gssn.fw121.com/js/jquery-3.2.1.min.js"></script>
+    <title>每日提醒</title>
+
+</head>
+<body>
+    <div class="main">
+        <div class="cons">
+            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+            <div id="cons_radar" style="width: 300px;height:245px;"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:inline="javascript">
+
+        var data = [[${data}]];
+        console.log(data);
+        var health = [[${data.health}]];
+        var love = [[${data.love}]];
+        var money = [[${data.money}]];
+        var work = [[${data.work}]];
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('cons_radar'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            radar: [
+                {
+                    indicator: [
+                        {text: 'health', max: 100},
+                        {text: 'love', max: 100},
+                        {text: 'money', max: 100},
+                        {text: 'work', max: 100}
+                    ],
+                    center: ['50%','50%'],
+                    radius: 80
+                }
+
+            ],
+            series: [
+                {
+                    type: 'radar',
+                    tooltip: {
+                        trigger: 'item'
+                    },
+                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                    data: [
+                        {
+                            value: [health,love,money,work],
+                            name: '星座运势'
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+    </script>
+    <script>
+        var temEcharts=null;
+        $(function() {
+            // 基于准备好的dom，初始化echarts实例
+            temEcharts = echarts.init(document.getElementById('cons_radar'));
+        });
+
+        function returnEchartImg(echartObj){
+            return echartObj.getDataURL();
+        }
+    </script>
+
+</body>
+</html>

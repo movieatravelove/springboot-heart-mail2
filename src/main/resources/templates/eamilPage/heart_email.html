@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>每日提醒</title>
+</head>
+<!-- 由于在微信QQ邮箱提醒中无法正常显示样式
+     所有样式全部加载标签上
+    -->
+<body style="margin: 0;background-color: #eeeeee; font-family: SourceHanSansSC-Light !important">
+<div style="text-align: left; font-size: 18px; letter-spacing: 1px; background-color: #eeeeee;">
+    <div class="main" style="width: 600px; background-color:#fff; color: #333;
+    padding: 50px; margin: 20px auto;">
+        <div style="display: flow-root;">
+            <div style="width: 200px;float: left;">
+                <span th:text="${noon}" style="font-size: 20px; display:block;overflow-wrap:break-word">早上好</span>
+                <span th:text="${username}" style="font-size: 36px; font-weight: 500">March21Sunny。</span>
+            </div>
+
+            <div style="border: 1px solid #222; padding: 10px 12px; width: 230px;
+            float: right;font-size: 18px;font-weight: 450">
+                <div style="text-align: center">
+                    <span th:text="${day} ">08/27 </span>
+                    ♡
+                    <span th:text="${week} ">星期四 </span>
+                    ♡
+                    <span th:text="${yi}">宜努力</span>
+                </div>
+                <div style="display:block;overflow-wrap:break-word;text-align: center;">
+                    我们认识<span th:text="${dayCount}">520</span>天啦
+                </div>
+            </div>
+        </div>
+
+        <div class="one-note" th:if="${note}" style="margin-top: 66px;font-size: 14px;">
+            <p th:text="${note}" style="margin: 0; padding-bottom: 5px;">
+                知足使贫穷的人富有；而贪婪使富足的人贫穷。</p>
+            <p th:text="${content}" style="margin: 0; padding-bottom: 5px;">Content makes poor men rich;
+                discontent makes rich men poor.</p>
+        </div>
+
+        <div class="one-images" th:if="${image}" style="margin-top:5px; border: 1px dashed #6a6a6a;
+        vertical-align:middle; text-align: center">
+            <img width="98%" th:src="@{${image}}" src="cat.jpg" style="margin-top: 5px"/>
+        </div>
+
+        <div style="margin-top: 50px; display: flow-root;">
+            <div class="tips" th:if="${weather}" style="width: 230px; float: left">
+                <span th:text="${city}" style="font-weight: 500">西安</span>
+                <span th:text="${weather}" style="display:block;overflow-wrap:break-word;">阴转多云</span>
+                <span th:text="${temperature}" style="display:block;overflow-wrap:break-word;">2℃~15℃</span>
+                <span th:text="${advice}" style="display:block;overflow-wrap:break-word;">建议着厚外套加毛衣等服装</span>
+            </div>
+
+            <div class="cons" th:if="${summary}" style="width: 350px; float: right; text-align: right">
+                <span th:text="${consName}" style="font-weight: 500">双子座</span>
+                <span th:each="s : ${summary}" th:text="${s}"
+                      style="display:block;overflow-wrap:break-word;">今天情绪会阳光很多</span>
+            </div>
+        </div>
+
+
+        <div class="jock" th:if="${jock}" style="margin-top: 50px;">
+            <div class="title" style="font-weight: 500; margin-bottom: 5px;">要记得开心呦~
+            </div>
+            <div class="text" th:text="${jock}" style="font-size: 18px;font-weight: 500">
+                ‍‍哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: right;font-size: 70px; font-style: oblique;color: #b2b2b2; opacity: 40%">
+           来自最♥你的我
+        </div>
+    </div>
+</div>
+</body>
+</html>

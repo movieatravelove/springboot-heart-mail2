@@ -1,0 +1,52 @@
+server:
+  port: 8082
+  connection-timeout: 20000ms
+  servlet:
+    #TODO 项目根路径
+    context-path: /
+
+spring:
+  # 邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: xxxx@qq.com
+    password: pwd
+    default-encoding: utf-8
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+              enable: true
+    #是否用启用加密传送的协议验证项
+    #注意：在spring.mail.password处的值是需要在邮箱设置里面生成的授权码，这个不是真实的密码。
+
+
+api:
+  ### api来源于聚合数据 https://www.juhe.cn/myData
+  #全国天气预报
+  weather:
+    url: http://v.juhe.cn/weather/index
+    appKey: 7df0066ed7fcfa7adf14f057ee41b13d
+  #最新笑话
+  joke:
+    url: http://v.juhe.cn/joke/content/text.php
+    url2: http://v.juhe.cn/joke/randJoke.php
+    appKey: 888d63811b8039d11be24f8c0ed6e73f
+  #星座运势
+  horoscope:
+    url: http://web.juhe.cn:8080/constellation/getAll
+    appKey: 06e884ecf48e3171cf712beab7bf6557
+  ### 必应每日一图
+  oneImageUrl: https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1
+  ### 爱词霸每日一句
+  oneNoteUrl: http://open.iciba.com/dsapi/
+
+# 生成星座幸运指数雷达图的地址
+getRadarUrl: http://localhost:8082/heart/cons?consName={0}
+
+
+filter:
+  words: 沙雕, 傻逼, SB, 杀人
+
